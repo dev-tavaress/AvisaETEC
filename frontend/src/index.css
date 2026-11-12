@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-red: #b91c1c;
+    --brand-red-dark: #991b1b;
+    --ink: #0f172a;
+    --paper: #f8fafc;
+  }
+
+  html {
+    background: var(--paper);
+  }
+
+  body {
+    @apply antialiased selection:bg-red-800 selection:text-white;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  button, input, textarea, select {
+    font: inherit;
+  }
+
+  button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 3px solid rgba(159, 29, 44, 0.3);
+    outline-offset: 2px;
+  }
+
+  /* Suporte nativo a prefers-reduced-motion (A11y) */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Custom scrollbar estilizada e acessível */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-600;
+}
+
+@layer components {
+  .institutional-rule {
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-red) 0 34%, #d7d9dc 34% 100%);
+  }
+
+  .page-heading {
+    font-size: 1.875rem;
+    line-height: 1.25;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+  }
+
+  .surface {
+    @apply bg-white border border-slate-200 shadow-sm;
+  }
+
+  .field {
+    @apply rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5;
+  }
+
+  .button-primary {
+    @apply min-h-[42px] rounded-xl bg-red-700 px-5 py-2.5 font-bold text-white shadow-lg shadow-red-700/20 transition-colors hover:bg-red-800 disabled:opacity-50;
+  }
+}
+
+/* The application uses a class-based theme. These shared overrides keep
+   legacy light utilities from painting dark-mode surfaces white. */
+.dark,
+.dark body {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.dark .bg-white,
+.dark .bg-\[\#f7f7f5\] {
+  background-color: #0f172a !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark .bg-slate-50\/70,
+.dark .bg-red-50\/40 {
+  background-color: #1e293b !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-300,
+.dark .border-slate-100,
+.dark .border-red-100 {
+  border-color: #374151 !important;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #9ca3af;
+}
+
+.dark .institutional-rule {
+  background: linear-gradient(90deg, var(--brand-red) 0 34%, #374151 34% 100%);
+}

@@ -1,0 +1,14 @@
+node_modules
+package-lock.json
+dist    
+.env
+.impeccable
+.gemini
+.agent
+.env.example
+prisma
+DESIGN.md
+PRODUCT.md
+README.md
+Plano de Estudos.md
+Plano de Implementaçao.md
